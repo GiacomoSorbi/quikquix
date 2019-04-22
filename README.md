@@ -30,6 +30,6 @@ User will be able to:
   - `select` - multiple options (only one answer correct) - **MVP**
   - `multi` - multiple choices (multiple answers correct)
   - `text` - free typing
-  - `order` - drag and drop to reorder codebitss
+  - `order` - drag and drop to reorder codebits
 - `answers` (only for `select`, `multi`) - **MVP**
 - `answer` - **MVP**
