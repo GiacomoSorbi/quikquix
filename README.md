@@ -17,19 +17,19 @@ User will be able to:
 
 `Quiz` object format considered will always have:
 
-- `description` - **MVP**
+- `title` - **MVP**
 - `author` (userID)
 - `created` (creation time)
 - `stats` (how many times it has been visualised, how many correct answers it received)
 - `tags` (#JS, #JavaScript, #Algorithms, etc) from a preset list, at least one is mandatory - **MVP**
 - `defaultTime` - **MVP**
-- `questionType`:
+- `body`:
   - text only - **MVP**
   - text and images
-- `answerType`:
+  - `answers` (only for `select`, `multi`) - **MVP**
+  - `answer` - **MVP**
+- `type`:
   - `select` - multiple options (only one answer correct) - **MVP**
   - `multi` - multiple choices (multiple answers correct)
   - `text` - free typing
   - `order` - drag and drop to reorder codebits
-- `answers` (only for `select`, `multi`) - **MVP**
-- `answer` - **MVP**
