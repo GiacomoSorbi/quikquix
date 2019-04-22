@@ -2,8 +2,10 @@
 
 export AWS_DEFAULT_REGION=eu-west-1
 
-# Destroy the S3 bucket
+terraform destroy -auto-approve
 
-aws s3 rb s3://quikquix-ci-tfstate
+# Destroy the S3 bucket. Needs '--force' because the bucket will potentially have files (tfstate)
+
+aws s3 rb s3://quikquix-ci-tfstate --force
 
 echo "Bucket s3://quikquix-ci-tfstate removed"
