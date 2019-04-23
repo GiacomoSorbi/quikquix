@@ -2,9 +2,9 @@
 
 export AWS_DEFAULT_REGION=eu-west-1
 
-terraform init -auto-approve
+terraform init -input=false
 
-terraform destroy -auto-approve
+terraform apply -input=false -auto-approve
 
 # Destroy the S3 bucket. Needs '--force' because the bucket will potentially have files (tfstate)
 
