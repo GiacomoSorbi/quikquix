@@ -5,7 +5,7 @@ provider "aws" {
 
 terraform {
     backend "s3" {
-        bucket = "quikquix-ci-tfstate"
+        bucket = "quikquix-tf"
         key = "terraform.tfstate"
         region = "eu-west-1"
     }

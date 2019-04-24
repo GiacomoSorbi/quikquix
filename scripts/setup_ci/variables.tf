@@ -13,7 +13,7 @@ variable "ssh-whitelisted-cidr-ranges" {
 
 variable "concourse-whitelisted-cidr-ranges" {
     type = "list"
-    default = ["86.182.149.104/32"]
+    default = ["86.182.149.104/32", "176.254.37.14/32"]
 }
 
 variable "ec2-ami" {
