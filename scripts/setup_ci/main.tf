@@ -113,10 +113,34 @@ resource "null_resource" "example_provisioner" {
             "sudo service docker start",
             "sudo usermod -a -G docker ec2-user",
             "sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose",
-            "sudo chmod +x /usr/local/bin/docker-compose"
+            "sudo chmod +x /usr/local/bin/docker-compose",
+            "sudo yum -y install git"
         ]
     }
+}
 
+resource "null_resource" "concourse-installer" {
+    triggers {
+        example_provisioner = "${null_resource.example_provisioner.id}"
+    }
+
+    connection {
+            type = "ssh"
+            user = "ec2-user"
+            host = "${aws_instance.ec2-instance.public_ip}"
+            private_key = "${tls_private_key.ssh-key.private_key_pem}"
+    }
+    provisioner "remote-exec" {
+        
+        inline = [
+            "git clone https://github.com/concourse/concourse-docker.git",
+            "cd concourse-docker",
+            "export CONCOURSE_EXTERNAL_URL=http://${aws_instance.ec2-instance.public_ip}:8080",
+            "./keys/generate",
+            "docker-compose up -d"
+            
+        ]
+    }
 }
 output "ssh-private-key" {
     value = "${tls_private_key.ssh-key.private_key_pem}"
